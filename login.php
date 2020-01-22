@@ -32,9 +32,11 @@ function pp($data){
     $_SESSION['role'] = $data['role']; 
     header("location: index.php");
     exit;
-  }
+  }else{
 
-var_dump($_SESSION);exit;
+    header("location: login.php?status=fail");
+
+  }
 
 }
 ?>
@@ -56,6 +58,13 @@ padding : 50px 0;
 .login-sec h2:after{content:" "; width:100px; height:5px; background:#6ec6ff; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
 .btn-login{background: #0069c0; color:#fff; font-weight:600;}
 </style>
+<?php 
+  
+  if(isset($_GET['status']) and $_GET['status'] == 'fail'){
+    echo '<script>alert("Login gagal! Username atau Password Salah!");</script>';
+  }
+
+?>
 </head>
 <body>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
